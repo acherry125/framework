@@ -1,5 +1,7 @@
 import FrButton from './FrButton';
 
-export default {
+const components = {
   FrButton
-}
+};
+
+export default components;

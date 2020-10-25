@@ -10,6 +10,7 @@ export const FrButton = (props) => {
     children,
     disabled,
     inverted,
+    size,
     variant,
 
     handleClick
@@ -24,8 +25,9 @@ export const FrButton = (props) => {
       inverted={inverted}
       primary={variant === 'primary'}
       secondary={variant === 'secondary'}
+      size={size}
 
-      handleClick={handleClick}
+      onClick={handleClick}
     >
       {children || content}
     </Button>
@@ -34,7 +36,6 @@ export const FrButton = (props) => {
 
 FrButton.defaultProps = {
   as: 'button',
-  color: undefined,
   content: '',
   disabled: false,
   inverted: false,
@@ -44,12 +45,12 @@ FrButton.defaultProps = {
 
 FrButton.propTypes = {
   as: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.oneOf(['red', 'orange', 'yellow', 'green', 'blue', 'grey', 'black', 'purple', 'pink', 'brown', 'teal', 'olive', 'violet']),
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
-  variant: PropTypes.string,
-  
+  size: PropTypes.oneOf(['mini', 'tiny', 'small', 'large', 'big', 'huge', 'massive']),
+  variant: PropTypes.oneOf(['', 'primary', 'secondary', 'basic']),
   handleClick: PropTypes.func
 }
 

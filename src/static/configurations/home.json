@@ -1,0 +1,7 @@
+{
+  "component": "FrButton",
+  "configuration": {
+    "variant": "primary",
+    "inverted": true
+  }
+}
