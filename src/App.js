@@ -5,9 +5,7 @@ import FrButton from './componentLibrary/FrButton';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <FrButton>Hello</FrButton>
-      </header>
     </div>
   );
 }
