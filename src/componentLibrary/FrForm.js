@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { renderChildren } from '../common/utils';
 
 export const FrForm = (props) => {
   const { 
@@ -18,7 +19,7 @@ export const FrForm = (props) => {
       success={variant === 'success'}
       warning={variant === 'warning'}
     >
-      {children}
+      {renderChildren(children, (i) => ({ key: i }))}
     </Form>
   )
 }

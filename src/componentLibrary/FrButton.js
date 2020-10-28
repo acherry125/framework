@@ -6,8 +6,7 @@ export const FrButton = (props) => {
   const { 
     as,
     color,
-    content,
-    children,
+    label,
     disabled,
     inverted,
     size,
@@ -29,14 +28,14 @@ export const FrButton = (props) => {
 
       onClick={handleClick}
     >
-      {children || content}
+      {label}
     </Button>
   )
 }
 
 FrButton.defaultProps = {
   as: 'button',
-  content: '',
+  label: '',
   disabled: false,
   inverted: false,
   variant: 'primary',
@@ -46,7 +45,7 @@ FrButton.defaultProps = {
 FrButton.propTypes = {
   as: PropTypes.string,
   color: PropTypes.oneOf(['red', 'orange', 'yellow', 'green', 'blue', 'grey', 'black', 'purple', 'pink', 'brown', 'teal', 'olive', 'violet']),
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
   size: PropTypes.oneOf(['mini', 'tiny', 'small', 'large', 'big', 'huge', 'massive']),

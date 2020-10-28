@@ -19,7 +19,7 @@ const sizeToWidth = (size) => {
 
 export const FrFormInput = (props) => {
   const { 
-    children,
+    fluid,
     label,
     size,
     
@@ -47,6 +47,7 @@ export const FrFormInput = (props) => {
     <Input 
       onChange={handleChangeEvent}
       onBlur={handleBlurEvent}
+      fluid={fluid}
     />
   );
 
@@ -61,10 +62,12 @@ export const FrFormInput = (props) => {
 }
 
 FrFormInput.defaultProps = {
+  fluid: false
 }
 
 FrFormInput.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  fluid: PropTypes.bool
 }
 
 export default FrFormInput;
