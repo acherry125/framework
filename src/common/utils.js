@@ -5,3 +5,5 @@ export const renderChildren = (children, getProps) => {
 }
 
 export const shouldSaveToRedux = (props) => true;
+
+export const saveToRedux = (reduxPath, apiType) => { console.log('would be saving to redux with datapath', reduxPath, 'api type', apiType) };

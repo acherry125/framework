@@ -111,30 +111,25 @@ function App() {
             <FrFormGroup widths="equal">
               <FrFormInput
                 label={"My budget goal"}
-                handleChange={console.log}
                 handleBlur={console.log}
               />
               <FrFormInput
                 label={"My achieved budget"}
-                handleChange={console.log}
                 handleBlur={console.log}
               />
               <FrFormInput
                 label={"Next year's goal?"}
-                handleChange={console.log}
                 handleBlur={console.log}
               />
             </FrFormGroup>
             <FrFormInput
               size="small"
               label={"Last year's goal?"}
-              handleChange={console.log}
               handleBlur={console.log}
             />
             <FrFormInput
               size="medium"
               label={"Last year's achievement?"}
-              handleChange={console.log}
               handleBlur={console.log}
             />
             <FrButton label="Button" />

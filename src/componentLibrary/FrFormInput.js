@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { shouldSaveToRedux, saveToRedux } from '../common/utils';
 
 const sizeToWidth = (size) => {
   switch(size) {
@@ -22,6 +23,8 @@ export const FrFormInput = (props) => {
     fluid,
     label,
     size,
+    reduxJsonPath,
+    saveToService,
     
     handleChange,
     handleBlur
@@ -37,8 +40,11 @@ export const FrFormInput = (props) => {
   const handleBlurEvent = (e) => {
     const name = _.get(e, 'target.name', '');
     const value = _.get(e, 'target.value', '');
-
-    handleBlur(name, value);
+    if (shouldSaveToRedux) {
+      saveToRedux(reduxJsonPath, saveToService);
+    } else {
+      handleBlur(name, value);
+    }
   }
 
   const width = sizeToWidth(size);
