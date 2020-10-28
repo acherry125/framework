@@ -1,7 +1,93 @@
 # Configurable Framework
 ## Create pages instantly with JSON
 
+![Example image of framework](https://github.com/acherry125/framework/blob/main/repoStatic/images/formcontrols.JPG)
 
+```
+{
+  "component": "FrForm",
+  "nestedChildren": [
+    {
+      "component": "FrSegment",
+      "nestedChildren": [
+        {
+          "component": "FrHeader",
+          "configuration": {
+            "as": "h1",
+            "text": "A configurable form"
+          }
+        },
+        {
+          "component": "FrFormGroup",
+          "configuration": {
+            "widths": "equal"
+          },
+          "nestedChildren": [
+            {
+              "component": "FrFormInput",
+              "configuration": {
+                "label": "My budget goal",
+                "reduxJsonPath": "grant.budget.goal",
+                "saveToService": "dynamicData",
+                "formId": "budgetGoal",
+                "validationId": "budgetGoal"
+              }
+            },
+            {
+              "component": "FrFormInput",
+              "configuration": {
+                "label": "My achieved budget",
+                "reduxJsonPath": "grant.budget.achieved",
+                "saveToService": "dynamicData",
+                "formId": "achieved",
+                "validationId": "achieved"
+              }
+            },
+            {
+              "component": "FrFormInput",
+              "configuration": {
+                "label": "Next year's goal?",
+                "reduxJsonPath": "grant.budget.nextYearGoal",
+                "saveToService": "dynamicData",
+                "formId": "nextYearGoal",
+                "validationId": "nextYearGoal"
+              }
+            }
+          ]
+        },
+        {
+          "component": "FrFormInput",
+          "configuration": {
+            "size": "small",
+            "label": "Last year's goal?",
+            "reduxJsonPath": "grant.budget.lastYearGoal",
+            "saveToService": "dynamicData",
+            "formId": "nextYearGoal",
+            "validationId": "nextYearGoal"
+          }
+        },
+        {
+          "component": "FrFormInput",
+          "configuration": {
+            "size": "medium",
+            "label": "Last year's achievement?",
+            "reduxJsonPath": "grant.budget.lastYearAchievement",
+            "saveToService": "dynamicData",
+            "formId": "nextYearGoal",
+            "validationId": "nextYearGoal"
+          }
+        },
+        {
+          "component": "FrButton",
+          "configuration": {
+            "label": "Button"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
 
 
 # CRA BOILERPLATE
