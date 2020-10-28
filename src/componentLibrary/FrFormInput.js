@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -27,11 +27,11 @@ export const FrFormInput = (props) => {
     handleBlur
   } = props;
 
-  const handleChangeEvent = (e) => {
-    const name = _.get(e, 'target.name', '');
-    const value = _.get(e, 'target.value', '');
+  const [value, setValue] = useState(''); // needs to initialize from props
 
-    handleChange(name, value);
+  const handleChangeEvent = (e) => {
+    const value = _.get(e, 'target.value', '');
+    setValue(value);
   }
   
   const handleBlurEvent = (e) => {
@@ -47,6 +47,7 @@ export const FrFormInput = (props) => {
     <Input 
       onChange={handleChangeEvent}
       onBlur={handleBlurEvent}
+      value={value}
       fluid={fluid}
     />
   );
