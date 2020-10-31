@@ -1,5 +1,9 @@
-# Configurable Framework
-## Create pages instantly with JSON
+# Framework - The JSON-Based React form rendering library
+## Create React application forms instantly with JSON'
+
+(WIP) NPM package to come soon!
+
+The full list of components in the Framework component library [can be found here](https://github.com/acherry125/framework/tree/main/src/componentLibrary). Framework's rendered components currently use the [Semantic-UI react component library](https://github.com/Semantic-Org/Semantic-UI-React). Framework will likely move towards becoming CSS framework-agnostic in the medium-term.
 
 The components in Framework can be used as traditional JSX or in a JSON-based configurable format. See [App.js](https://github.com/acherry125/framework/blob/main/src/App.js) for an example.
 ![Example image of two identical Framework forms built with the JSX and JSON formats](https://github.com/acherry125/framework/blob/main/repoStatic/images/formcontrols.JPG)
