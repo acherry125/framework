@@ -28,6 +28,7 @@ FrFormGroup.defaultProps = {
 }
 
 FrFormGroup.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
   grouped: PropTypes.bool,
   inline: PropTypes.bool,
   widths: PropTypes.oneOf(['equal', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])

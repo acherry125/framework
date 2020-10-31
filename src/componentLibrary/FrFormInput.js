@@ -21,6 +21,7 @@ const sizeToWidth = (size) => {
 export const FrFormInput = (props) => {
   const { 
     fluid,
+    formId,
     label,
     size,
     reduxJsonPath,
@@ -50,6 +51,7 @@ export const FrFormInput = (props) => {
 
   const input = (
     <Input 
+      id={formId}
       onChange={handleChangeEvent}
       onBlur={handleBlurEvent}
       value={value}
@@ -74,10 +76,12 @@ FrFormInput.defaultProps = {
 FrFormInput.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   fluid: PropTypes.bool,
+  formId: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
   reduxJsonPath: PropTypes.string,
   saveToService: PropTypes.string,
-  handleBlur: PropTypes.func
+  handleBlur: PropTypes.func,
+  validationId: PropTypes.string
 }
 
 export default FrFormInput;

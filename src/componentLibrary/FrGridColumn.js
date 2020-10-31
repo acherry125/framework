@@ -1,22 +1,26 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { renderChildren } from '../common/utils';
 
-export const FrContainer = (props) => {
+export const FrGridColumn = (props) => {
   const { 
-    children
+    children,
+    width,
   } = props;
 
   return (
-    <Container>
+    <Grid.Column
+      width={width}
+    >
       {renderChildren(children, (i) => ({ key: i }))}
-    </Container>
+    </Grid.Column>
   )
 }
 
-FrContainer.propTypes = {
+FrGridColumn.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
+  width: PropTypes.number
 }
 
-export default FrContainer;
+export default FrGridColumn;

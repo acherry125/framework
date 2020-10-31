@@ -30,6 +30,7 @@ FrForm.defaultProps = {
 }
 
 FrForm.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
   loading: PropTypes.bool,
   size: PropTypes.oneOf(['mini', 'tiny', 'small', 'large', 'big', 'huge', 'massive']),
   variant: PropTypes.oneOf(['', 'success', 'warning', 'error']),

@@ -1,22 +1,29 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { renderChildren } from '../common/utils';
 
-export const FrContainer = (props) => {
+export const FrGrid = (props) => {
   const { 
-    children
+    children,
+    padded,
+    stackable,
   } = props;
 
   return (
-    <Container>
+    <Grid
+      padded={padded}
+      stackable={stackable}
+    >
       {renderChildren(children, (i) => ({ key: i }))}
-    </Container>
+    </Grid>
   )
 }
 
-FrContainer.propTypes = {
+FrGrid.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
+  padded: PropTypes.bool,
+  stackable: PropTypes.bool
 }
 
-export default FrContainer;
+export default FrGrid;

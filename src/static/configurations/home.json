@@ -1,81 +1,122 @@
 {
-  "component": "FrForm",
-  "nestedChildren": [
+  "pageRender": [
     {
-      "component": "FrSegment",
+      "component": "FrForm",
       "nestedChildren": [
         {
-          "component": "FrHeader",
-          "configuration": {
-            "as": "h1",
-            "text": "A configurable form"
-          }
-        },
-        {
-          "component": "FrFormGroup",
-          "configuration": {
-            "widths": "equal"
-          },
+          "component": "FrSegment",
           "nestedChildren": [
             {
-              "component": "FrFormInput",
+              "component": "FrHeader",
               "configuration": {
-                "label": "My budget goal",
-                "reduxJsonPath": "grant.budget.goal",
-                "saveToService": "dynamicData",
-                "formId": "budgetGoal",
-                "validationId": "budgetGoal"
+                "as": "h1",
+                "text": "A configurable form"
+              }
+            },
+            {
+              "component": "FrAlert",
+              "configuration": {
+                "header": "Instructions!",
+                "message": "Fill out this form carefully.",
+                "variant": "info"
+              }
+            },
+            {
+              "component": "FrFormGroup",
+              "configuration": {
+                "widths": "equal"
+              },
+              "nestedChildren": [
+                {
+                  "component": "FrFormInput",
+                  "configuration": {
+                    "label": "My budget goal",
+                    "reduxJsonPath": "grant.budget.goal",
+                    "saveToService": "dynamicData",
+                    "formId": "budgetGoal",
+                    "validationId": "budgetGoal"
+                  }
+                },
+                {
+                  "component": "FrFormInput",
+                  "configuration": {
+                    "label": "My achieved budget",
+                    "reduxJsonPath": "grant.budget.achieved",
+                    "saveToService": "dynamicData",
+                    "formId": "achieved",
+                    "validationId": "achieved"
+                  }
+                },
+                {
+                  "component": "FrFormInput",
+                  "configuration": {
+                    "label": "Next year's goal?",
+                    "reduxJsonPath": "grant.budget.nextYearGoal",
+                    "saveToService": "dynamicData",
+                    "formId": "nextYearGoal",
+                    "validationId": "nextYearGoal"
+                  }
+                }
+              ]
+            },
+            {
+              "component": "FrAlert",
+              "configuration": {
+                "header": "No lies!",
+                "message": "Be honest with yourself, if you didn't have a goal, use \"0.00$\"",
+                "variant": "warning"
               }
             },
             {
               "component": "FrFormInput",
               "configuration": {
-                "label": "My achieved budget",
-                "reduxJsonPath": "grant.budget.achieved",
-                "saveToService": "dynamicData",
-                "formId": "achieved",
-                "validationId": "achieved"
-              }
-            },
-            {
-              "component": "FrFormInput",
-              "configuration": {
-                "label": "Next year's goal?",
-                "reduxJsonPath": "grant.budget.nextYearGoal",
+                "size": "small",
+                "label": "Last year's goal?",
+                "reduxJsonPath": "grant.budget.lastYearGoal",
                 "saveToService": "dynamicData",
                 "formId": "nextYearGoal",
                 "validationId": "nextYearGoal"
               }
+            },
+            {
+              "component": "FrFormInput",
+              "configuration": {
+                "size": "medium",
+                "label": "Last year's achievement?",
+                "reduxJsonPath": "grant.budget.lastYearAchievement",
+                "saveToService": "dynamicData",
+                "formId": "nextYearGoal",
+                "validationId": "nextYearGoal"
+              }
+            },
+            {
+              "component": "FrAlert",
+              "configuration": {
+                "header": "Attention, this is an important alert!",
+                "message": {
+                  "$fr": {
+                    "propType": "element",
+                    "value": "You will need to redirect your attention to <a target='_blank' href=\"#apple\">my link</a> to inform yourself."
+                  }
+                }
+              }
+            },
+            {
+              "component": "FrContextConsumer",
+              "configuration": {
+                "contextToConsume": "FormSubmitContext",
+                "contextPassToChildAs": "handleClick"
+              },
+              "nestedChildren": [
+                {
+                  "component": "FrButton",
+                  "configuration": {
+                    "label": "Button"
+                  }
+                }
+              ]
             }
           ]
-        },
-        {
-          "component": "FrFormInput",
-          "configuration": {
-            "size": "small",
-            "label": "Last year's goal?",
-            "reduxJsonPath": "grant.budget.lastYearGoal",
-            "saveToService": "dynamicData",
-            "formId": "nextYearGoal",
-            "validationId": "nextYearGoal"
-          }
-        },
-        {
-          "component": "FrFormInput",
-          "configuration": {
-            "size": "medium",
-            "label": "Last year's achievement?",
-            "reduxJsonPath": "grant.budget.lastYearAchievement",
-            "saveToService": "dynamicData",
-            "formId": "nextYearGoal",
-            "validationId": "nextYearGoal"
-          }
-        },
-        {
-          "component": "FrButton",
-          "configuration": {
-            "label": "Button"
-          }
         }
       ]
     }

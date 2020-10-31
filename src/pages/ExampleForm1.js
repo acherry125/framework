@@ -5,6 +5,7 @@ const {
   FrForm,
   FrHeader,
   FrContainer,
+  FrContextConsumer,
   FrSegment,
   FrFormGroup,
   FrButton,
@@ -35,7 +36,14 @@ export const ExampleForm1 = (props) => {
             label={"Last year's achievement?"}
             handleBlur={console.log}
           />
-          <FrButton label="Button" />
+          <FrContextConsumer
+            contextToConsume="FormSubmitContext"
+            contextPassToChildAs="handleClick"
+          >
+            <FrButton
+              label="Button"
+            />
+          </FrContextConsumer>
         </FrForm>
       </FrSegment>
     </FrContainer>

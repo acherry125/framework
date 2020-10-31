@@ -16,7 +16,7 @@ export const FrSegment = (props) => {
 }
 
 FrSegment.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
 }
 
 export default FrSegment;
