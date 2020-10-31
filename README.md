@@ -1,4 +1,4 @@
-# Framework - The JSON-Based React form rendering library
+# Framework - JSON-based React forms
 ## Create React application forms instantly with JSON'
 
 (WIP) NPM package to come soon!
