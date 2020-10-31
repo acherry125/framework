@@ -1,163 +1,187 @@
 # Configurable Framework
 ## Create pages instantly with JSON
 
-![Example image of framework](https://github.com/acherry125/framework/blob/main/repoStatic/images/formcontrols.JPG)
+The components in Framework can be used as traditional JSX or in a JSON-based configurable format. See [App.js](https://github.com/acherry125/framework/blob/main/src/App.js) for an example.
+![Example image of two identical Framework forms built with the JSX and JSON formats](https://github.com/acherry125/framework/blob/main/repoStatic/images/formcontrols.JPG)
 
+Framework is built specifically to meet highly-flexible, complex form requirements. It will support redux data synchronization, redux-based validation errors and error rendering, and an API for "plug-in" components for your specific use-case.
+
+![Another example of a JSON-based Framework form](https://github.com/acherry125/framework/blob/main/repoStatic/images/configurable-form.JPG)
+
+Here is the JSON that generates the above form.
 ```
 {
-  "component": "FrForm",
-  "nestedChildren": [
+  "pageRender": [
     {
-      "component": "FrSegment",
+      "component": "FrForm",
       "nestedChildren": [
         {
-          "component": "FrHeader",
-          "configuration": {
-            "as": "h1",
-            "text": "A configurable form"
-          }
-        },
-        {
-          "component": "FrFormGroup",
-          "configuration": {
-            "widths": "equal"
-          },
+          "component": "FrSegment",
           "nestedChildren": [
             {
-              "component": "FrFormInput",
+              "component": "FrHeader",
               "configuration": {
-                "label": "My budget goal",
-                "reduxJsonPath": "grant.budget.goal",
-                "saveToService": "dynamicData",
-                "formId": "budgetGoal",
-                "validationId": "budgetGoal"
+                "as": "h1",
+                "text": "A configurable form"
+              }
+            },
+            {
+              "component": "FrAlert",
+              "configuration": {
+                "header": "Instructions!",
+                "message": "Fill out this form carefully.",
+                "variant": "info"
+              }
+            },
+            {
+              "component": "FrFormGroup",
+              "configuration": {
+                "widths": "equal"
+              },
+              "nestedChildren": [
+                {
+                  "component": "FrFormInput",
+                  "configuration": {
+                    "label": "My budget goal",
+                    "reduxJsonPath": "grant.budget.goal",
+                    "saveToService": "dynamicData",
+                    "formId": "budgetGoal",
+                    "validationId": "budgetGoal"
+                  }
+                },
+                {
+                  "component": "FrFormInput",
+                  "configuration": {
+                    "label": "My achieved budget",
+                    "reduxJsonPath": "grant.budget.achieved",
+                    "saveToService": "dynamicData",
+                    "formId": "achieved",
+                    "validationId": "achieved"
+                  }
+                },
+                {
+                  "component": "FrFormInput",
+                  "configuration": {
+                    "label": "Next year's goal?",
+                    "reduxJsonPath": "grant.budget.nextYearGoal",
+                    "saveToService": "dynamicData",
+                    "formId": "nextYearGoal",
+                    "validationId": "nextYearGoal"
+                  }
+                }
+              ]
+            },
+            {
+              "component": "FrAlert",
+              "configuration": {
+                "header": "No lies!",
+                "message": "Be honest with yourself, if you didn't have a goal, use \"0.00$\"",
+                "variant": "warning"
               }
             },
             {
               "component": "FrFormInput",
               "configuration": {
-                "label": "My achieved budget",
-                "reduxJsonPath": "grant.budget.achieved",
-                "saveToService": "dynamicData",
-                "formId": "achieved",
-                "validationId": "achieved"
-              }
-            },
-            {
-              "component": "FrFormInput",
-              "configuration": {
-                "label": "Next year's goal?",
-                "reduxJsonPath": "grant.budget.nextYearGoal",
+                "size": "small",
+                "label": "Last year's goal?",
+                "reduxJsonPath": "grant.budget.lastYearGoal",
                 "saveToService": "dynamicData",
                 "formId": "nextYearGoal",
                 "validationId": "nextYearGoal"
               }
+            },
+            {
+              "component": "FrFormInput",
+              "configuration": {
+                "size": "medium",
+                "label": "Last year's achievement?",
+                "reduxJsonPath": "grant.budget.lastYearAchievement",
+                "saveToService": "dynamicData",
+                "formId": "nextYearGoal",
+                "validationId": "nextYearGoal"
+              }
+            },
+            {
+              "component": "FrAlert",
+              "configuration": {
+                "header": "Attention, this is an important alert!",
+                "message": {
+                  "$fr": {
+                    "propType": "element",
+                    "value": "You will need to redirect your attention to <a target='_blank' href=\"#apple\">my link</a> to inform yourself."
+                  }
+                }
+              }
+            },
+            {
+              "component": "FrContextConsumer",
+              "configuration": {
+                "contextToConsume": "FormSubmitContext",
+                "contextPassToChildAs": "handleClick"
+              },
+              "nestedChildren": [
+                {
+                  "component": "FrButton",
+                  "configuration": {
+                    "label": "Button"
+                  }
+                }
+              ]
             }
           ]
-        },
-        {
-          "component": "FrFormInput",
-          "configuration": {
-            "size": "small",
-            "label": "Last year's goal?",
-            "reduxJsonPath": "grant.budget.lastYearGoal",
-            "saveToService": "dynamicData",
-            "formId": "nextYearGoal",
-            "validationId": "nextYearGoal"
-          }
-        },
-        {
-          "component": "FrFormInput",
-          "configuration": {
-            "size": "medium",
-            "label": "Last year's achievement?",
-            "reduxJsonPath": "grant.budget.lastYearAchievement",
-            "saveToService": "dynamicData",
-            "formId": "nextYearGoal",
-            "validationId": "nextYearGoal"
-          }
-        },
-        {
-          "component": "FrButton",
-          "configuration": {
-            "label": "Button"
-          }
         }
       ]
     }
   ]
 }
 ```
+You initialize this json like:
+```
+import HomeForm from "./static/configurations/home.json";
+import Renderer from "./renderer/Renderer";
 
+...
+<Renderer
+  component={"FrContainer"} // chosen top-level component, can be an FrGrid, FrForm, FrContainer, etc
+  nestedChildren={HomeForm.pageRender}
+/>
+```
 
-# CRA BOILERPLATE
-# Getting Started with Create React App
+[ExampleForm1](https://github.com/acherry125/framework/blob/main/src/pages/ExampleForm1.js) is a more traditional way of creating forms with Framework that gives the same functionality as the JSON format
+```
+ <FrContainer>
+  <FrSegment>
+    <FrForm>
+      <FrHeader as="h1" text="Regular JSX" />
+      <FrFormGroup widths="equal">
+        <FrFormInput label={"My budget goal"} handleBlur={console.log} />
+        <FrFormInput
+          label={"My achieved budget"}
+          handleBlur={console.log}
+        />
+        <FrFormInput label={"Next year's goal?"} handleBlur={console.log} />
+      </FrFormGroup>
+      <FrFormInput
+        size="small"
+        label={"Last year's goal?"}
+        handleBlur={console.log}
+      />
+      <FrFormInput
+        size="medium"
+        label={"Last year's achievement?"}
+        handleBlur={console.log}
+      />
+      <FrContextConsumer
+        contextToConsume="FormSubmitContext"
+        contextPassToChildAs="handleClick"
+      >
+        <FrButton
+          label="Button"
+        />
+      </FrContextConsumer>
+    </FrForm>
+  </FrSegment>
+</FrContainer>
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To run the example app bundled with the library, run `npm run start` or `yarn start`
