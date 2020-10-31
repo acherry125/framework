@@ -15,10 +15,8 @@ export const FrContainer = (props) => {
   )
 }
 
-FrContainer.defaultProps = {
-}
-
 FrContainer.propTypes = {
+  children: PropTypes.element
 }
 
 export default FrContainer;

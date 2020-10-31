@@ -26,7 +26,6 @@ export const FrFormInput = (props) => {
     reduxJsonPath,
     saveToService,
     
-    handleChange,
     handleBlur
   } = props;
 
@@ -40,7 +39,7 @@ export const FrFormInput = (props) => {
   const handleBlurEvent = (e) => {
     const name = _.get(e, 'target.name', '');
     const value = _.get(e, 'target.value', '');
-    if (shouldSaveToRedux) {
+    if (shouldSaveToRedux(reduxJsonPath)) {
       saveToRedux(reduxJsonPath, saveToService);
     } else {
       handleBlur(name, value);
@@ -74,7 +73,11 @@ FrFormInput.defaultProps = {
 
 FrFormInput.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
-  fluid: PropTypes.bool
+  fluid: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
+  reduxJsonPath: PropTypes.string,
+  saveToService: PropTypes.string,
+  handleBlur: PropTypes.func
 }
 
 export default FrFormInput;

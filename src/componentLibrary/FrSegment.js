@@ -15,10 +15,8 @@ export const FrSegment = (props) => {
   )
 }
 
-FrSegment.defaultProps = {
-}
-
 FrSegment.propTypes = {
+  children: PropTypes.element
 }
 
 export default FrSegment;
