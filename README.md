@@ -47,8 +47,8 @@ Here is the JSON that generates the above form.
                   "component": "FrFormInput",
                   "configuration": {
                     "label": "My budget goal",
-                    "reduxJsonPath": "grant.budget.goal",
-                    "saveToService": "dynamicData",
+                    "reduxJsonPath": "account.budget.goal",
+                    "saveToService": "dynamodb",
                     "formId": "budgetGoal",
                     "validationId": "budgetGoal"
                   }
@@ -57,8 +57,8 @@ Here is the JSON that generates the above form.
                   "component": "FrFormInput",
                   "configuration": {
                     "label": "My achieved budget",
-                    "reduxJsonPath": "grant.budget.achieved",
-                    "saveToService": "dynamicData",
+                    "reduxJsonPath": "account.budget.achieved",
+                    "saveToService": "dynamodb",
                     "formId": "achieved",
                     "validationId": "achieved"
                   }
@@ -67,8 +67,8 @@ Here is the JSON that generates the above form.
                   "component": "FrFormInput",
                   "configuration": {
                     "label": "Next year's goal?",
-                    "reduxJsonPath": "grant.budget.nextYearGoal",
-                    "saveToService": "dynamicData",
+                    "reduxJsonPath": "account.budget.nextYearGoal",
+                    "saveToService": "dynamodb",
                     "formId": "nextYearGoal",
                     "validationId": "nextYearGoal"
                   }
@@ -88,8 +88,8 @@ Here is the JSON that generates the above form.
               "configuration": {
                 "size": "small",
                 "label": "Last year's goal?",
-                "reduxJsonPath": "grant.budget.lastYearGoal",
-                "saveToService": "dynamicData",
+                "reduxJsonPath": "account.budget.lastYearGoal",
+                "saveToService": "dynamodb",
                 "formId": "nextYearGoal",
                 "validationId": "nextYearGoal"
               }
@@ -99,8 +99,8 @@ Here is the JSON that generates the above form.
               "configuration": {
                 "size": "medium",
                 "label": "Last year's achievement?",
-                "reduxJsonPath": "grant.budget.lastYearAchievement",
-                "saveToService": "dynamicData",
+                "reduxJsonPath": "account.budget.lastYearAchievement",
+                "saveToService": "dynamodb",
                 "formId": "nextYearGoal",
                 "validationId": "nextYearGoal"
               }

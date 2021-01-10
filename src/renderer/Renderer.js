@@ -1,5 +1,5 @@
 import React from 'react';
-import componentLibrary from '../componentLibrary';
+import componentLibrary, { FrFormInput, FrForm } from '../componentLibrary';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser'; 
 import _ from 'lodash';
@@ -35,6 +35,7 @@ const configureProp = (prop) => {
 
 export const Renderer = (props) => {
   const {
+    editable,
     component,
     configuration,
     extraProps,
@@ -61,13 +62,26 @@ export const Renderer = (props) => {
   const unknownProps = _.reduce(configProps, (acc, prop, name) => RenderAs.propTypes && !_.includes(_.keys(RenderAs.propTypes), name) ? [...acc, { name, value: prop }] : acc, []);
   if (!_.isEmpty(unknownProps)) console.log('Component is rendering with extra props not defined in propTypes', component, ':', unknownProps);
 
-  return (
+  const rendered = (
     <RenderAs 
       {...configProps}
     >
       <NestedChildren />
     </RenderAs>
   );
+
+  return editable ? (
+      <React.Fragment>
+        <FrForm>
+          <FrFormInput 
+            label="Edit the configuration"
+            inputType="textarea"
+          />
+        </FrForm>
+        {rendered}
+      </React.Fragment>
+    ) :
+    rendered;
 }
 
 const baseShape = {

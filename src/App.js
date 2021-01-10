@@ -20,6 +20,7 @@ function App() {
       <FrGridColumn width={8}>
         <FormSubmitContext.Provider value={(e) => console.log('Clicking configurable submit', e.target)}>
           <Renderer
+            editable={true}
             component={"FrContainer"}
             configuration={{}}
             nestedChildren={HomeForm.pageRender}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input } from 'semantic-ui-react';
+import { Form, Input, TextArea } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { shouldSaveToRedux, saveToRedux } from '../common/utils';
@@ -24,9 +24,9 @@ export const FrFormInput = (props) => {
     formId,
     label,
     size,
+    inputType,
     reduxJsonPath,
     saveToService,
-    
     handleBlur
   } = props;
 
@@ -49,15 +49,31 @@ export const FrFormInput = (props) => {
 
   const width = sizeToWidth(size);
 
-  const input = (
-    <Input 
-      id={formId}
-      onChange={handleChangeEvent}
-      onBlur={handleBlurEvent}
-      value={value}
-      fluid={fluid}
-    />
-  );
+  let input;
+
+  switch(inputType) {
+    case 'textarea':
+      input = (
+        <TextArea 
+          rows={3}
+          onChange={handleChangeEvent}
+          onBlur={handleBlurEvent}
+          value={value}
+        />
+      );
+      break;
+    case 'text':
+    default:
+      input = (
+        <Input 
+          id={formId}
+          onChange={handleChangeEvent}
+          onBlur={handleBlurEvent}
+          value={value}
+          fluid={fluid}
+        />
+      )
+  }
 
   return (
     <Form.Field width={width} >
@@ -70,10 +86,13 @@ export const FrFormInput = (props) => {
 }
 
 FrFormInput.defaultProps = {
-  fluid: false
+  fluid: false,
+  inputType: 'text',
+  handleBlur: () => console.error('Unimplemented onblur handler for FrFormInput')
 }
 
 FrFormInput.propTypes = {
+  inputType: PropTypes.oneOf(['text', 'textarea']),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   fluid: PropTypes.bool,
   formId: PropTypes.string,
